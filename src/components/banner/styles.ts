@@ -4,7 +4,7 @@ export const Container = styled.section`
   position: relative;
   height: 24rem;
   background: var(--color-bg-accent);
-  border: 2px solid var(--color-border);
+  border: 3px solid var(--color-border);
   border-radius: var(--radius-base);
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -13,6 +13,7 @@ export const Container = styled.section`
 
   :hover {
     border-color: var(--color-white);
+    box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px, rgb(0 0 0 / 72%) 0px 30px 22px -10px;
   }
 
   > span {
