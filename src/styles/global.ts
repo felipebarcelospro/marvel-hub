@@ -80,7 +80,7 @@ const GlobalStyle = createGlobalStyle`
     --size-lg: 4rem;
 
     /* BORDER-RADIUS */
-    --radius-base: 0.25rem;
+    --radius-base: 0.8rem;
     --radius-full: 50%;
 
     /* Z-INDEX */
@@ -95,10 +95,7 @@ const GlobalStyle = createGlobalStyle`
     --zindex-tooltip: 1800;
 
     /* SIZES */
-    --shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-      rgb(0 0 0 / 12%) 0px 1px 1px 0px, rgb(60 66 87 / 16%) 0px 0px 0px 1px,
-      rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px,
-      rgb(60 66 87 / 8%) 0px 2px 5px 0px;
+    --shadow: 0 .6rem .6rem 0 rgba(0, 0, 0, 0.25);
 
     /* FONT-FAMILY */
     --font-family: 'Inter', sans-serif;

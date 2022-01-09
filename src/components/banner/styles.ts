@@ -1,0 +1,37 @@
+import styled from 'styled-components'
+
+export const Container = styled.section`
+  position: relative;
+  height: 24rem;
+  background: var(--color-bg-accent);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-base);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  :hover {
+    border-color: var(--color-white);
+  }
+
+  > span {
+    position: absolute;
+  }
+`
+
+export const Overlay = styled.div`
+  position: absolute;
+  padding-left: var(--space-xl);
+  padding-bottom: var(--space-lg);
+  bottom: 0;
+
+  h1, h2 {
+    font-size: var(--size-xs);
+  }
+
+  h2 {
+    opacity: 0.6;
+    font-weight: 400;
+  }
+`
