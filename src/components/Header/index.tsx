@@ -9,7 +9,7 @@ export function Header (): React.ReactElement {
   return (
     <Container>
       <Wrapper>
-        <NextImage src="/logo.svg" alt="Marvel Hub" width={163} height={33} />
+        <NextImage src="/logo.svg" alt="Marvel Hub" width={90} height={33} />
 
         <Menu>
           <MenuLink path="/" icon={<FiHome />} exact>Main</MenuLink>
