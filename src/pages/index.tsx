@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { AppLayout } from '../layouts/AppLayouts'
+import { AppLayout } from '../layouts/app-layouts'
 
 export default function Main (): React.ReactElement {
   return (
