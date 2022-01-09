@@ -1,15 +1,16 @@
 import Head from 'next/head'
+import { AppLayout } from '../layouts/AppLayouts'
 
-export default function Main() {
+export default function Main (): React.ReactElement {
   return (
-    <div>
+    <>
       <Head>
         <title>Marvel Hub</title>
       </Head>
 
-      <main>
+      <AppLayout>
         <h1>Hello, Marvel Hub</h1>
-      </main>
-    </div>
+      </AppLayout>
+    </>
   )
 }
