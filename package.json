@@ -1,0 +1,27 @@
+{
+  "name": "marvel-hub",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "12.0.7",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.8",
+    "@types/react": "^17.0.38",
+    "eslint": "8.6.0",
+    "eslint-config-next": "12.0.7",
+    "typescript": "^4.5.4"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/StartecJobsDev/reactjs-test.git",
+  "author": "Felipe Barcelos <felipebarcelospro@gmail.com>",
+  "license": "MIT"
+}
