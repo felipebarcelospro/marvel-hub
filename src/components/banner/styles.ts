@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.section`
-  margin-top: calc(var(--space-xl) * 2);
+  margin-top: var(--space-xl);
   margin-bottom: var(--space-xl);
 
   position: relative;
