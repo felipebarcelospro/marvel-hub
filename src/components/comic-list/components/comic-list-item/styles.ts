@@ -1,15 +1,13 @@
 import styled from 'styled-components'
 
 export const Container = styled.article`
-  display: flex;
-  align-items: center;
   background: linear-gradient(rgb(48, 50, 62), rgb(30, 31, 42));
   border: 3px solid #3a3c48;
   border-radius: var(--radius-base);
-  padding: 0.6rem;
   box-shadow: var(--shadow);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  overflow: hidden;
 
   :hover {
     border-color: var(--color-white);
@@ -17,27 +15,15 @@ export const Container = styled.article`
     transform: scale(1.03);
   }
 
-  > span {
-    opacity: 0.6;
-    font-weight: bold;
-  }
-
-  .avatar {
-    height: 4rem;
-    width: 4rem;
-    border-radius: var(--radius-base);
-    overflow: hidden;
-    
-    margin-right: var(--space-sm);
-
-    img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-    }
+  img {
+    width: 100%;
   }
 
   .info {
+    border-top: 1px solid #3a3c48;
+    padding: 1rem;
+    margin-top: -6px;
+
     h1, h2 {
       font-size: var(--font-size-md);
       line-height: 120%;

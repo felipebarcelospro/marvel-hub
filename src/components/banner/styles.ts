@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.section`
+  margin: var(--space-xl) 0;
+
   position: relative;
   height: 24rem;
   background: var(--color-bg-accent);
