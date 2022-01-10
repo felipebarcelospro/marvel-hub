@@ -54,26 +54,31 @@ export default function Main (): React.ReactElement {
             title="Featured"
             data={[
               {
+                id: '1',
                 title: 'Captain America/Iron Man #2',
                 cover: 'https://i.annihil.us/u/prod/marvel/i/mg/9/50/61d4c516beb76/portrait_uncanny.jpg',
                 author: 'Landy, Unzueta'
               },
               {
+                id: '1',
                 title: 'Star Wars: Doctor Aphra #17',
                 cover: 'https://i.annihil.us/u/prod/marvel/i/mg/5/c0/61ae1d0674d31/portrait_uncanny.jpg',
                 author: 'Landy, Unzueta'
               },
               {
+                id: '1',
                 title: 'Luke Cage: City of Fire #1',
                 cover: 'https://i.annihil.us/u/prod/marvel/i/mg/e/50/61ae2bc0a4c3e/portrait_uncanny.jpg',
                 author: 'Landy, Unzueta'
               },
               {
+                id: '1',
                 title: 'Inferno #4',
                 cover: 'https://i.annihil.us/u/prod/marvel/i/mg/8/f0/61d4c4fa3053f/portrait_uncanny.jpg',
                 author: 'Hickman, Schiti'
               },
               {
+                id: '1',
                 title: 'Elektra: Black, White & Blood #1',
                 cover: 'https://i.annihil.us/u/prod/marvel/i/mg/2/b0/61d4c4193a204/portrait_uncanny.jpg',
                 author: 'Soule, DARMINI'
@@ -84,26 +89,31 @@ export default function Main (): React.ReactElement {
             title="Best of Spider Man"
             data={[
               {
+                id: '1',
                 title: 'Black Widow #13',
                 cover: 'https://i.annihil.us/u/prod/marvel/i/mg/3/90/61d4c5184d772/portrait_uncanny.jpg',
                 author: 'Thompson, Pimentel'
               },
               {
+                id: '1',
                 title: 'The Amazing Spider-Man #84',
                 cover: 'https://i.annihil.us/u/prod/marvel/i/mg/f/40/61d4c41cded7e/portrait_uncanny.jpg',
                 author: 'Ziglar, Medina'
               },
               {
+                id: '1',
                 title: 'Wastelanders: Doom #1',
                 cover: 'https://i.annihil.us/u/prod/marvel/i/mg/9/70/61d4c517ae86c/portrait_uncanny.jpg',
                 author: 'Gronbekk, Ohta'
               },
               {
+                id: '1',
                 title: 'Shang-Chi #7',
                 cover: 'https://i.annihil.us/u/prod/marvel/i/mg/c/00/61d4c4fa11be9/portrait_uncanny.jpg',
                 author: 'Yang, Ruan'
               },
               {
+                id: '1',
                 title: 'Captain Marvel #35',
                 cover: 'https://i.annihil.us/u/prod/marvel/i/mg/3/d0/61d4c4386681f/portrait_uncanny.jpg',
                 author: 'Thompson, Davila'
@@ -114,11 +124,13 @@ export default function Main (): React.ReactElement {
             title="Best of 2021"
             data={[
               {
+                id: '1',
                 title: 'Warhammer 40,000: Sisters of Battle #5',
                 cover: 'https://i.annihil.us/u/prod/marvel/i/mg/9/30/61d4c4de544f0/portrait_uncanny.jpg',
                 author: 'Gronbekk, Salazar'
               },
               {
+                id: '1',
                 title: 'X-Men #6',
                 cover: 'https://i.annihil.us/u/prod/marvel/i/mg/c/20/61d4c4de3be62/portrait_uncanny.jpg',
                 author: 'Duggan, Larraz'

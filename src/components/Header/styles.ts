@@ -10,6 +10,16 @@ export const Container = styled.header`
     align-items: center;
 
     min-height: 90px;
+
+    .header-logo {
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+      cursor: pointer;
+
+      :hover {
+        opacity: 0.6;
+      }
+    }
   }
 `
 

@@ -1,4 +1,5 @@
 import NextImage from 'next/image'
+import NextLink from 'next/link'
 
 import { Wrapper } from '../wrapper'
 import { MenuLink } from './components/menu-link'
@@ -9,7 +10,11 @@ export function Header (): React.ReactElement {
   return (
     <Container>
       <Wrapper>
-        <NextImage src="/logo.svg" alt="Marvel Hub" width={90} height={33} />
+        <div className="header-logo">
+          <NextLink href='/'>
+              <NextImage src="/logo.svg" alt="Marvel Hub" width={90} height={33} />
+          </NextLink>
+        </div>
 
         <Menu>
           <MenuLink path="/" icon={<FiHome />} exact>Main</MenuLink>
