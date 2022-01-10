@@ -24,29 +24,34 @@ export default function Main (): React.ReactElement {
             title="BEST CHARACTERS"
             data={[
               {
+                id: '1',
                 name: 'Wanda Maximoff',
                 avatarUrl: 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/012scw_ons_crd_02.jpg',
-                count: '250'
+                comicsCount: '250'
               },
               {
+                id: '1',
                 name: 'Vision',
                 avatarUrl: 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/013vis_ons_crd_01-1.jpg',
-                count: '250'
+                comicsCount: '250'
               },
               {
+                id: '1',
                 name: 'Captain America',
                 avatarUrl: 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/cap_ons_crd_01.jpg',
-                count: '250'
+                comicsCount: '250'
               },
               {
+                id: '1',
                 name: 'Winter Soldier',
                 avatarUrl: 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/015wsb_ons_crd_03.jpg',
-                count: '250'
+                comicsCount: '250'
               },
               {
+                id: '1',
                 name: 'Black Window',
                 avatarUrl: 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/011blw_ons_crd_04.jpg',
-                count: '250'
+                comicsCount: '250'
               }
             ]}
           />

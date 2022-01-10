@@ -1,11 +1,5 @@
-import { CharacterListItem } from './components/character-list-item'
+import { Character, CharacterListItem } from './components/character-list-item'
 import { Container, Grid } from './styles'
-
-interface Character {
-  avatarUrl: string
-  name: string
-  count: string
-}
 
 interface CharacterListProps {
   title: string
@@ -17,14 +11,14 @@ export function CharacterList ({ title, data }: CharacterListProps): React.React
     <Container>
       <h1>{title}</h1>
       <Grid>
-        {data.map(({ avatarUrl, name, count }, index) => (
+        {data.map(({ id, avatarUrl, name, comicsCount }, index) => (
           <CharacterListItem
             key={index}
             data={{
-              index: `${index + 1}`,
+              id,
               avatarUrl,
               name,
-              count
+              comicsCount
             }}
           />
         ))}
