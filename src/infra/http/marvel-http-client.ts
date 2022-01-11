@@ -6,8 +6,8 @@ import { MarvelHttpResponse } from '../../data/protocols/http/marvel-http-respon
 
 export class MarvelHttpClient implements HttpClient {
   async request (data: HttpRequest): Promise<HttpResponse<MarvelHttpResponse>> {
-    const publicKey = '1c7568a2a8d15659b8a393049d27a6ef'
-    const privateKey = '026260f22b344b578ae7ef17b4cf7858cf4e6257'
+    const publicKey = process.env.NEXT_PUBLIC_MARVELAPI_PUBLIC_TOKEN
+    const privateKey = process.env.NEXT_PUBLIC_MARVELAPI_PRIVATE_TOKEN
 
     const timestamp = new Date().getTime()
     const hash = md5(timestamp + privateKey + publicKey)
