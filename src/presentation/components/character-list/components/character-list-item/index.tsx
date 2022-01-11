@@ -1,29 +1,20 @@
 import NextLink from 'next/link'
+import { CharacterModel } from '../../../../../domain/models/character'
 
-import { Comic } from '../../../comic-list/components/comic-list-item'
 import { Container } from './styles'
 
-export interface Character {
-  id: string
-  avatarUrl: string
-  name: string
-  description: string
-  comicsCount: number
-  comics: Comic[]
-}
-
 interface CharacterListItemProps {
-  data: Character
+  data: CharacterModel
 }
 
 export function CharacterListItem ({ data }: CharacterListItemProps): React.ReactElement {
-  const { id, avatarUrl, name, comicsCount } = data
+  const { id, cover, name, comicsCount } = data
 
   return (
     <NextLink href={`/characters/${id}`}>
       <Container>
         <div className='avatar'>
-          <img src={avatarUrl} alt={name} />
+          <img src={cover} alt={name} />
         </div>
         <div className='info'>
           <h1>{name}</h1>

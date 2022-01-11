@@ -1,9 +1,10 @@
-import { Character, CharacterListItem } from './components/character-list-item'
+import { CharacterModel } from '../../../domain/models/character'
+import { CharacterListItem } from './components/character-list-item'
 import { Container, Grid } from './styles'
 
 interface CharacterListProps {
   title: string
-  data: Character[]
+  data: CharacterModel[]
 }
 
 export function CharacterList ({ title, data }: CharacterListProps): React.ReactElement {
