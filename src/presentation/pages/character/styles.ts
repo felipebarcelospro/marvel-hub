@@ -12,6 +12,10 @@ export const Banner = styled.section`
     grid-template-columns: 1fr 4fr;
     grid-gap: var(--space-lg);
 
+    @media (max-width: 720px) {
+      grid-template-columns: 1fr;
+    }
+
     .thumbnail-container {
       .thumbnail {
         overflow: hidden;
@@ -29,6 +33,7 @@ export const Banner = styled.section`
       > h1 {
         font-size: 1.8rem;
         margin-bottom: var(--space-lg);
+        line-height: 150%;
       }
 
       > hr {

@@ -44,11 +44,12 @@ export const Banner = styled.section`
 
         h1, h2 {
           font-size: var(--font-size-md);
-          line-height: 120%;
+          
         }
 
         h1 {
           margin-bottom: var(--space-xs);
+          line-height: 150%;
         }
 
         h2, p {
@@ -56,6 +57,7 @@ export const Banner = styled.section`
 
           font-weight: 400;
           font-size: var(--font-size-md);
+          line-height: 120%;
         }
       }
     }
