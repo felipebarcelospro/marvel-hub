@@ -137,9 +137,20 @@ const GlobalStyle = createGlobalStyle`
     font-family: sans-serif;
   }
 
+  /* CAROUSEL */
+  .carousel-wrapper {
+    @media (max-width: 720px) {
+      display: flex;
+      scroll-snap-type: x mandatory;
+      overflow-x: auto;
+
+      > div, > img {
+        scroll-snap-align: start
+      }
+    }
+  }
 
   /* BUTTONS */
-
   .btn {
     display: flex;
     align-items: center;

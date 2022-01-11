@@ -15,7 +15,7 @@ export function Banner ({ src, title, createdAt, href }: BannerProps): React.Rea
   return (
     <NextLink href={href}>
       <Container>
-        <NextImage src={src} alt={title} width={1800} height={600} objectFit='cover' />
+        <NextImage src={src} alt={title} layout="fill" objectFit="cover" />
 
         <Overlay>
           <h1>{title}</h1>

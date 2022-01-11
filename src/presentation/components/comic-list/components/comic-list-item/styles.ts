@@ -8,11 +8,17 @@ export const Container = styled.article`
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   overflow: hidden;
+  
+  @media (max-width: 720px) {
+    min-width: 22rem;
+  }
 
-  :hover {
-    border-color: var(--color-white);
-    box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px, rgb(0 0 0 / 72%) 0px 30px 22px -10px;
-    transform: scale(1.03);
+  @media (min-width: 720px) {
+    :hover {
+      border-color: var(--color-white);
+      box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px, rgb(0 0 0 / 72%) 0px 30px 22px -10px;
+      transform: scale(1.03);
+    }
   }
 
   img {

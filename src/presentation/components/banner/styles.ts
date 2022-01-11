@@ -14,9 +14,15 @@ export const Container = styled.section`
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
-  :hover {
-    border-color: var(--color-white);
-    box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px, rgb(0 0 0 / 72%) 0px 30px 22px -10px;
+  @media (max-width: 720px) {
+    height: 14rem;
+  }
+
+  @media (min-width: 720px) {
+    :hover {
+      border-color: var(--color-white);
+      box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px, rgb(0 0 0 / 72%) 0px 30px 22px -10px;
+    }
   }
 
   > span {

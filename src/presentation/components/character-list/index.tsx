@@ -13,7 +13,7 @@ export function CharacterList ({ title, data }: CharacterListProps): React.React
       <h1>{title}</h1>
 
       {data.length > 0 && (
-         <Grid>
+         <Grid className="carousel-wrapper">
           {data.map((character, index) => (
             <CharacterListItem key={index} data={character} />
           ))}

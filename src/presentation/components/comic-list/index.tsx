@@ -15,7 +15,7 @@ export function ComicList ({ title, data }: ComicListProps): React.ReactElement 
       <h1>{title}</h1>
 
       {data.length > 0 && (
-        <Grid>
+        <Grid className="carousel-wrapper">
           {data.map((data, index) => (
             <ComicListItem key={index} data={data} />
           ))}
