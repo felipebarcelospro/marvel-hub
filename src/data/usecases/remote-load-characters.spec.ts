@@ -92,6 +92,32 @@ describe('RemoteLoadCharactersList', () => {
 
     expect(httpClient.params).toEqual(params)
   })
+
+  it('should return a list of characters on success', async () => {
+    const { sut, httpClient } = makeSut()
+
+    httpClient.response.body = {
+      code: 200,
+      status: 'ok',
+      data: {
+        results: [
+          makeFakeCharacter()
+        ]
+      }
+    }
+
+    const characters = await sut.execute()
+
+    expect(characters).toEqual([
+      {
+        id: '1',
+        name: 'any_name',
+        description: 'any_description',
+        cover: 'any_cover.jpg',
+        comicsCount: 10
+      }
+    ])
+  })
 })
 
 export {}
