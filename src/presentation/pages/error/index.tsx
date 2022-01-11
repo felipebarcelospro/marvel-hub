@@ -1,6 +1,8 @@
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 
+import NextHead from 'next/head'
+
 import { Wrapper } from '../../components/wrapper'
 import { AppLayout } from '../../layouts/app-layouts'
 import { Container } from './styles'
@@ -8,6 +10,10 @@ import { Container } from './styles'
 export function ErrorPage (): React.ReactElement {
   return (
     <>
+      <NextHead>
+        <title>MarvelHub - Error 404</title>
+      </NextHead>
+
       <AppLayout>
         <Container>
           <Wrapper>

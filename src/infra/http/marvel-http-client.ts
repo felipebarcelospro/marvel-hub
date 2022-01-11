@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios'
 import md5 from 'md5'
 
 import { HttpClient, HttpRequest, HttpResponse } from '../../data/protocols/http/http-client'
-import { MarvelHttpResponse } from '../../data/protocols/http/marvel-http-client'
+import { MarvelHttpResponse } from '../../data/protocols/http/marvel-http-response'
 
 export class MarvelHttpClient implements HttpClient {
   async request (data: HttpRequest): Promise<HttpResponse<MarvelHttpResponse>> {

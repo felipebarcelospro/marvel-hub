@@ -1,4 +1,4 @@
-import { MarvelHttpResponse } from '../../data/protocols/http/marvel-http-client'
+import { MarvelHttpResponse } from '../../data/protocols/http/marvel-http-response'
 
 export interface LoadCharactersListDTO {
   titleStartsWith?: number
