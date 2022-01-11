@@ -13,9 +13,12 @@ export const Banner = styled.section`
     grid-gap: var(--space-lg);
 
     .thumbnail-container {
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      border-radius: var(--radius-base);
+      .thumbnail {
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        border-radius: var(--radius-base);
+        height: 30rem;
+      }
     }
 
     .info-container {

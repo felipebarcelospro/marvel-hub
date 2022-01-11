@@ -25,7 +25,9 @@ export function SingleComicPage ({ comic, readMore }: SingleComicPagecomic): Rea
           <Banner>
             <Wrapper>
               <div className='thumbnail-container'>
-                <NextImage src={comic.cover} width={350} height={540} />
+                <div className="thumbnail">
+                  <NextImage src={comic.cover} width={350} height={540} />
+                </div>
               </div>
               <div className='info-container'>
                 <h1>{comic.title}</h1>
