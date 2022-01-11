@@ -13,11 +13,19 @@ export function ComicList ({ title, data }: ComicListProps): React.ReactElement 
   return (
     <Container>
       <h1>{title}</h1>
-      <Grid>
-        {data.map((data, index) => (
-          <ComicListItem key={index} data={data} />
-        ))}
-      </Grid>
+
+      {data.length > 0 && (
+        <Grid>
+          {data.map((data, index) => (
+            <ComicListItem key={index} data={data} />
+          ))}
+        </Grid>
+      )}
+
+      {data.length === 0 && (
+        <p>No comics found</p>
+      )}
+
     </Container>
   )
 }

@@ -16,7 +16,7 @@ export class RemoteLoadComicsList {
     })
 
     if (httpResponse.statusCode !== HttpStatusCode.ok) {
-      throw new Error('Unexpected status code')
+      throw new Error(`Unexpected status code - ERROR ${httpResponse.statusCode}`)
     }
 
     httpResponse.body.data.results = httpResponse.body.data.results.map((comic: any) => {

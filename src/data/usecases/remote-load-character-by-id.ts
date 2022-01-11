@@ -9,13 +9,12 @@ export class RemoteLoadCharacterById implements LoadCharacterById {
 
   async execute (params?: LoadCharacterByIdDTO): Promise<LoadCharacterById.Model> {
     const httpResponse = await this.httpClient.request({
-      url: '/comics',
-      method: 'get',
-      params: params
+      url: `/characters/${params.id}`,
+      method: 'get'
     })
 
     if (httpResponse.statusCode !== HttpStatusCode.ok) {
-      throw new Error('Unexpected status code')
+      throw new Error(`Unexpected status code - ERROR ${httpResponse.statusCode}`)
     }
 
     const characterData: any = httpResponse.body.data.results[0]

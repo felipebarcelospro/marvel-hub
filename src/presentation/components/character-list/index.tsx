@@ -11,11 +11,18 @@ export function CharacterList ({ title, data }: CharacterListProps): React.React
   return (
     <Container>
       <h1>{title}</h1>
-      <Grid>
-        {data.map((character, index) => (
-          <CharacterListItem key={index} data={character} />
-        ))}
-      </Grid>
+
+      {data.length > 0 && (
+         <Grid>
+          {data.map((character, index) => (
+            <CharacterListItem key={index} data={character} />
+          ))}
+        </Grid>
+      )}
+
+      {data.length === 0 && (
+        <p>No comics found</p>
+      )}
     </Container>
   )
 }

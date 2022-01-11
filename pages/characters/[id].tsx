@@ -29,24 +29,30 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ctx => {
-  const characterId = String(ctx.params.id)
+  try {
+    const characterId = String(ctx.params.id)
 
-  const remoteLoadCharacter = makeRemoteLoadCharacterById()
-  const character = await remoteLoadCharacter.execute({
-    id: characterId
-  })
+    const remoteLoadCharacter = makeRemoteLoadCharacterById()
+    const character = await remoteLoadCharacter.execute({
+      id: characterId
+    })
 
-  const remoteLoadComics = makeRemoteLoadComicsList()
-  const characterComics = await remoteLoadComics.execute({
-    characters: characterId,
-    offset: Math.floor(Math.random() * 100)
-  })
+    const remoteLoadComics = makeRemoteLoadComicsList()
+    const characterComics = await remoteLoadComics.execute({
+      characters: characterId,
+      offset: Math.floor(Math.random() * 100)
+    })
 
-  return {
-    props: {
-      character,
-      characterComics
-    },
-    revalidate: 60 * 60 * 24 * 30
+    return {
+      props: {
+        character,
+        characterComics: characterComics.data.results
+      },
+      revalidate: 60 * 60 * 24 * 30
+    }
+  } catch (error) {
+    return {
+      notFound: true
+    }
   }
 }
