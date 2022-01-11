@@ -137,6 +137,47 @@ const GlobalStyle = createGlobalStyle`
     font-family: sans-serif;
   }
 
+  /* GRID_SYSTEM */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > * {
+      margin: 0 var(--space-sm);
+
+      &:first-child {
+        margin-left: 0;
+        margin-right: var(--space-sm);
+      }
+
+      &:last-child {
+        margin-left: var(--space-sm);
+        margin-right: 0;
+      }
+
+      @media only screen and (max-width: 468px) {
+        padding: 0;
+        width: 100% !important;
+      }
+    }
+
+    .col-sm {
+      width: calc(25% - var(--space-sm)) !important;
+    }
+
+    .col-md {
+      width: calc(50% - var(--space-sm)) !important;
+    }
+
+    .col-lg {
+      width: calc(75% - var(--space-sm)) !important;
+    }
+
+    .large-xl {
+      width: calc(100% - var(--space-sm)) !important;
+    }
+  }
+
   /* CAROUSEL */
   .carousel-wrapper {
     @media (max-width: 720px) {

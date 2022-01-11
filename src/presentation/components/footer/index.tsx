@@ -6,7 +6,7 @@ export function Footer (): React.ReactElement {
   return (
     <Container>
       <Wrapper>
-        <span>Created By <b>@felipebarcelospro</b></span>
+        <span>By <b>@felipebarcelospro</b></span>
 
         <a className="btn btn-outline" href="#">
           <FiGithub />
