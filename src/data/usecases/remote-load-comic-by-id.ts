@@ -16,7 +16,7 @@ export class RemoteLoadComicById implements LoadComicById {
     })
 
     if (httpResponse.statusCode !== HttpStatusCode.ok) {
-      throw new UnexpectedError()
+      throw new UnexpectedError(httpResponse.statusCode)
     }
 
     const comicData: any = httpResponse.body.data.results[0]

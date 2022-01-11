@@ -16,7 +16,7 @@ export class RemoteLoadCharactersList implements LoadCharactersList {
     })
 
     if (httpResponse.statusCode !== HttpStatusCode.ok) {
-      throw new UnexpectedError()
+      throw new UnexpectedError(httpResponse.statusCode)
     }
 
     return httpResponse.body.data.results.map((character: any) => {

@@ -103,7 +103,7 @@ describe('RemoteLoadCharacterById', () => {
 
     const promise = sut.execute({ id: '1' })
 
-    await expect(promise).rejects.toEqual(new UnexpectedError())
+    await expect(promise).rejects.toEqual(new UnexpectedError(httpClient.response.statusCode))
   })
 
   it('should throw if comic is not found', async () => {

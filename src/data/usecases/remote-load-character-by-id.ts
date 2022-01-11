@@ -16,7 +16,7 @@ export class RemoteLoadCharacterById implements LoadCharacterById {
     })
 
     if (httpResponse.statusCode !== HttpStatusCode.ok) {
-      throw new UnexpectedError()
+      throw new UnexpectedError(httpResponse.statusCode)
     }
 
     const characterData: any = httpResponse.body.data.results[0]

@@ -127,7 +127,7 @@ describe('RemoteLoadCharactersList', () => {
 
     const promise = sut.execute()
 
-    await expect(promise).rejects.toEqual(new UnexpectedError())
+    await expect(promise).rejects.toEqual(new UnexpectedError(httpClient.response.statusCode))
   })
 })
 

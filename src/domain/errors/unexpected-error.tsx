@@ -1,6 +1,6 @@
 export class UnexpectedError extends Error {
-  constructor () {
-    super('Unexpected status code')
+  constructor (statusCode: number) {
+    super(`Unexpected status code - ${statusCode}`)
     this.name = 'UnexpectedError'
   }
 }
