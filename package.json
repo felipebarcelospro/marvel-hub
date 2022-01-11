@@ -7,7 +7,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --passWithNoTests --no-cache --runInBand",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "test:staged": "npm test -- --findRelatedTests"
   },
   "dependencies": {
     "axios": "^0.24.0",
