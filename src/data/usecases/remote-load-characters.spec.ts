@@ -69,6 +69,29 @@ describe('RemoteLoadCharactersList', () => {
 
     expect(httpClient.method).toBe('get')
   })
+
+  it('should call httpClient with correct params', async () => {
+    const { sut, httpClient } = makeSut()
+
+    httpClient.response.body = {
+      code: 200,
+      status: 'ok',
+      data: {
+        results: [
+          makeFakeCharacter()
+        ]
+      }
+    }
+
+    const params = {
+      limit: 20,
+      offset: 0
+    }
+
+    await sut.execute(params)
+
+    expect(httpClient.params).toEqual(params)
+  })
 })
 
 export {}
