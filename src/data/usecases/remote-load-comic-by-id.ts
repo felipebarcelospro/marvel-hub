@@ -10,9 +10,8 @@ export class RemoteLoadComicById implements LoadComicById {
 
   async execute (params?: LoadComicByIdDTO): Promise<LoadComicById.Model> {
     const httpResponse = await this.httpClient.request({
-      url: '/comics',
-      method: 'get',
-      params: params
+      url: `/comics/${params.id}`,
+      method: 'get'
     })
 
     if (httpResponse.statusCode !== HttpStatusCode.ok) {
