@@ -5,26 +5,19 @@ import { ComicList } from '../../components/comic-list'
 import { Share } from '../../components/share'
 import { Wrapper } from '../../components/wrapper'
 import { AppLayout } from '../../layouts/app-layouts'
-import { Comic } from '../../components/comic-list/components/comic-list-item'
 import { Container, Banner } from './styles'
+import { ComicModel } from '../../../domain/models/comic'
 
-interface SingleComicPageProps {
-  id: number
-  title: string
-  cover: string
-  publishedAt: string
-  writer: string
-  penciler: string
-  coverArtist: string
-  description: string
-  readMore: Comic[]
+interface SingleComicPagecomic {
+  comic: ComicModel
+  readMore: ComicModel[]
 }
 
-export function SingleComicPage (props: SingleComicPageProps): React.ReactElement {
+export function SingleComicPage ({ comic, readMore }: SingleComicPagecomic): React.ReactElement {
   return (
     <>
       <NextHead>
-        <title>Marvel Hub - {props.title}</title>
+        <title>Marvel Hub - {comic.title}</title>
       </NextHead>
 
       <AppLayout>
@@ -32,14 +25,14 @@ export function SingleComicPage (props: SingleComicPageProps): React.ReactElemen
           <Banner>
             <Wrapper>
               <div className='thumbnail-container'>
-                <NextImage src={props.cover} width={350} height={540} />
+                <NextImage src={comic.cover} width={350} height={540} />
               </div>
               <div className='info-container'>
-                <h1>{props.title}</h1>
+                <h1>{comic.title}</h1>
 
                 <div className="item">
                   <h1>Published:</h1>
-                  <h2>{props.publishedAt}</h2>
+                  <h2>{comic.publishedAt}</h2>
                 </div>
 
                 <hr />
@@ -48,14 +41,14 @@ export function SingleComicPage (props: SingleComicPageProps): React.ReactElemen
                   <div className="col-md">
                     <div className="item">
                       <h1>Writer:</h1>
-                      <h2>{props.writer}</h2>
+                      <h2>{comic.writer}</h2>
                     </div>
                   </div>
 
                   <div className="col-md">
                     <div className="item">
                       <h1>Penciler:</h1>
-                      <h2>{props.penciler}</h2>
+                      <h2>{comic.penciler}</h2>
                     </div>
                   </div>
                 </div>
@@ -64,16 +57,16 @@ export function SingleComicPage (props: SingleComicPageProps): React.ReactElemen
 
                 <div className="item">
                   <h1>Cover Artist:</h1>
-                  <h2>{props.coverArtist}</h2>
+                  <h2>{comic.coverArtist}</h2>
                 </div>
 
-                {props.description && (
+                {comic.description && (
                   <>
                     <hr />
 
                     <div className="item">
                       <h1>Description:</h1>
-                      <p>{props.description}</p>
+                      <p>{comic.description}</p>
                     </div>
                   </>
                 )}
@@ -86,7 +79,7 @@ export function SingleComicPage (props: SingleComicPageProps): React.ReactElemen
           </Banner>
 
           <Wrapper>
-            <ComicList title="Read More" data={props.readMore} />
+            <ComicList title="Read More" data={readMore} />
           </Wrapper>
         </Container>
       </AppLayout>

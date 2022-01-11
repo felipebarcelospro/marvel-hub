@@ -1,7 +1,7 @@
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 
-import { ComicModel } from '../../../../../domain/models/comics'
+import { ComicModel } from '../../../../../domain/models/comic'
 import { Container } from './styles'
 
 interface ComicListItemProps {

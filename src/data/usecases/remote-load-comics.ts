@@ -1,5 +1,5 @@
-import { ComicModel } from '../../domain/models/comics'
-import { LoadComicsListDTO } from '../../domain/usecases/remote-load-comics'
+import { ComicModel } from '../../domain/models/comic'
+import { LoadComicsListDTO } from '../../domain/usecases/load-comics'
 import { HttpClient, HttpStatusCode } from '../protocols/http/http-client'
 import { MarvelHttpResponse } from '../protocols/http/marvel-http-client'
 

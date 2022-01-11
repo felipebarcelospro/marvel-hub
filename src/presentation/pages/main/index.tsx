@@ -6,7 +6,7 @@ import { Character } from '../../components/character-list/components/character-
 import { ComicList } from '../../components/comic-list'
 import { Wrapper } from '../../components/wrapper'
 import { AppLayout } from '../../layouts/app-layouts'
-import { ComicModel } from '../../../domain/models/comics'
+import { ComicModel } from '../../../domain/models/comic'
 
 interface MainPageProps {
   characters: Character[]

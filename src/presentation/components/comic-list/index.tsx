@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ComicModel } from '../../../domain/models/comics'
+import { ComicModel } from '../../../domain/models/comic'
 import { ComicListItem } from './components/comic-list-item'
 import { Container, Grid } from './styles'
 
