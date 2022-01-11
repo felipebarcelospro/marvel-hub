@@ -1,3 +1,4 @@
+import { UnexpectedError } from '../../domain/errors/unexpected-error'
 import { HttpClientSpy } from '../../main/factories/http/mock-http-client'
 import { MarvelHttpResponse } from '../protocols/http/marvel-http-response'
 import { RemoteLoadCharacterById } from './remote-load-character-by-id'
@@ -92,5 +93,15 @@ describe('RemoteLoadCharacterById', () => {
       cover: 'any_cover.jpg',
       comicsCount: 10
     })
+  })
+
+  it('should throw if httpClient returns an error', async () => {
+    const { sut, httpClient } = makeSut()
+
+    httpClient.response.statusCode = 500
+
+    const promise = sut.execute({ id: '1' })
+
+    await expect(promise).rejects.toEqual(new UnexpectedError())
   })
 })
