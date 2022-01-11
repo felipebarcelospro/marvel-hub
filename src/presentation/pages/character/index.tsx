@@ -5,15 +5,17 @@ import { ComicList } from '../../components/comic-list'
 import { Share } from '../../components/share'
 import { Wrapper } from '../../components/wrapper'
 import { AppLayout } from '../../layouts/app-layouts'
-import { Character } from '../../components/character-list/components/character-list-item'
 import { Banner, Container } from './styles'
+import { CharacterModel } from '../../../domain/models/character'
+import { ComicModel } from '../../../domain/models/comic'
 
 interface SingleCharacterProps {
-  character: Character
+  character: CharacterModel
+  characterComics: ComicModel[]
 }
 
-export function SingleCharacterPage ({ character }: SingleCharacterProps): React.ReactElement {
-  const { name, description, comics, avatarUrl } = character
+export function SingleCharacterPage ({ character, characterComics }: SingleCharacterProps): React.ReactElement {
+  const { name, description, cover } = character
 
   return (
     <>
@@ -27,7 +29,7 @@ export function SingleCharacterPage ({ character }: SingleCharacterProps): React
             <Wrapper>
               <div className='thumbnail-container'>
                 <div className="thumbnail">
-                  <NextImage src={avatarUrl} width={350} height={350} />
+                  <NextImage src={cover} width={350} height={350} />
                 </div>
               </div>
               <div className='info-container'>
@@ -52,10 +54,7 @@ export function SingleCharacterPage ({ character }: SingleCharacterProps): React
           </Banner>
 
           <Wrapper>
-            <ComicList
-              title={`Comics of ${name}`}
-              data={comics}
-            />
+            <ComicList title={`Comics of ${name}`} data={characterComics} />
           </Wrapper>
         </Container>
       </AppLayout>

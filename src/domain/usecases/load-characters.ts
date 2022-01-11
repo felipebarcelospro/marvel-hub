@@ -1,5 +1,4 @@
 import { MarvelHttpResponse } from '../../data/protocols/http/marvel-http-client'
-import { ComicModel } from '../models/comic'
 
 export interface LoadCharactersListDTO {
   titleStartsWith?: number
@@ -19,6 +18,5 @@ export namespace LoadCharactersList {
     name: string
     description: string
     comicsCount: number
-    comics?: ComicModel[]
   }
 }

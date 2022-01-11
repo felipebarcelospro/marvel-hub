@@ -29,12 +29,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ctx => {
-  const { id } = ctx.params
+  const comicId = String(ctx.params.id)
 
   const remoteLoadComicById = makeRemoteLoadComicById()
-  const remoteLoadComics = makeRemoteLoadComicsList()
+  const comic = await remoteLoadComicById.execute({
+    id: comicId
+  })
 
-  const comic = await remoteLoadComicById.execute({ id: String(id) })
+  const remoteLoadComics = makeRemoteLoadComicsList()
   const readMore = await remoteLoadComics.execute({
     limit: 5,
     offset: Math.floor(Math.random() * 1000)
