@@ -1,3 +1,4 @@
+import { EntityNotFound } from '../../domain/errors/entity-not-found'
 import { LoadComicById, LoadComicByIdDTO } from '../../domain/usecases/load-comic-by-id'
 import { HttpClient, HttpStatusCode } from '../protocols/http/http-client'
 import { MarvelHttpResponse } from '../protocols/http/marvel-http-response'
@@ -21,7 +22,7 @@ export class RemoteLoadComicById implements LoadComicById {
     const comicData: any = httpResponse.body.data.results[0]
 
     if (!comicData) {
-      throw new Error('Comic not found')
+      throw new EntityNotFound('Comic')
     }
 
     return {

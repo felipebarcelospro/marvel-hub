@@ -1,3 +1,4 @@
+import { UnexpectedError } from '../../domain/errors/unexpected-error'
 import { LoadCharactersList, LoadCharactersListDTO } from '../../domain/usecases/load-characters'
 import { HttpClient, HttpStatusCode } from '../protocols/http/http-client'
 import { MarvelHttpResponse } from '../protocols/http/marvel-http-response'
@@ -15,7 +16,7 @@ export class RemoteLoadCharactersList implements LoadCharactersList {
     })
 
     if (httpResponse.statusCode !== HttpStatusCode.ok) {
-      throw new Error(`Unexpected status code - ERROR ${httpResponse.statusCode}`)
+      throw new UnexpectedError()
     }
 
     httpResponse.body.data.results = httpResponse.body.data.results.map((character: any) => {

@@ -1,3 +1,5 @@
+import { EntityNotFound } from '../../domain/errors/entity-not-found'
+import { UnexpectedError } from '../../domain/errors/unexpected-error'
 import { LoadCharacterById, LoadCharacterByIdDTO } from '../../domain/usecases/load-characters-by-id'
 import { HttpClient, HttpStatusCode } from '../protocols/http/http-client'
 import { MarvelHttpResponse } from '../protocols/http/marvel-http-response'
@@ -14,13 +16,13 @@ export class RemoteLoadCharacterById implements LoadCharacterById {
     })
 
     if (httpResponse.statusCode !== HttpStatusCode.ok) {
-      throw new Error(`Unexpected status code - ERROR ${httpResponse.statusCode}`)
+      throw new UnexpectedError()
     }
 
     const characterData: any = httpResponse.body.data.results[0]
 
     if (!characterData) {
-      throw new Error('Character not found')
+      throw new EntityNotFound('Character')
     }
 
     return {

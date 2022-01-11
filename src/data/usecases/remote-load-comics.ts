@@ -1,3 +1,4 @@
+import { UnexpectedError } from '../../domain/errors/unexpected-error'
 import { ComicModel } from '../../domain/models/comic'
 import { LoadComicsListDTO } from '../../domain/usecases/load-comics'
 import { HttpClient, HttpStatusCode } from '../protocols/http/http-client'
@@ -16,7 +17,7 @@ export class RemoteLoadComicsList {
     })
 
     if (httpResponse.statusCode !== HttpStatusCode.ok) {
-      throw new Error(`Unexpected status code - ERROR ${httpResponse.statusCode}`)
+      throw new UnexpectedError()
     }
 
     httpResponse.body.data.results = httpResponse.body.data.results.map((comic: any) => {
@@ -27,7 +28,7 @@ export class RemoteLoadComicsList {
         publishedAt: comic.dates[0].date,
         writer: comic.creators.items.find(creator => creator.role === 'writer')?.name ?? 'Unknown',
         penciler: comic.creators.items.find(creator => creator.role === 'penciler')?.name ?? 'Unknown',
-        coverArtist: comic.creators.items.find(creator => creator.role === 'penciler')?.name ?? 'Unknown',
+        coverArtist: comic.creators.items.find(creator => creator.role === 'penciller (cover)')?.name ?? 'Unknown',
         description: comic.description
       }
     })
