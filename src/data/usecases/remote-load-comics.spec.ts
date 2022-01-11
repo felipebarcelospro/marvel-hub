@@ -8,6 +8,38 @@ interface Sut {
   httpClient: HttpClientSpy<MarvelHttpResponse>
 }
 
+const makeFakeComic = (): unknown => ({
+  id: 1,
+  title: 'any_title',
+  description: 'any_description',
+  thumbnail: {
+    path: 'any_cover',
+    extension: 'jpg'
+  },
+  dates: [
+    {
+      type: 'onsaleDate',
+      date: 'any_publishedAt'
+    }
+  ],
+  creators: {
+    items: [
+      {
+        role: 'writer',
+        name: 'any_writer'
+      },
+      {
+        role: 'penciler',
+        name: 'any_penciler'
+      },
+      {
+        role: 'penciller (cover)',
+        name: 'any_coverArtist'
+      }
+    ]
+  }
+})
+
 const makeSut = (): Sut => {
   const httpClient = new HttpClientSpy()
   const sut = new RemoteLoadComicsList(httpClient)
@@ -93,37 +125,7 @@ describe('RemoteLoadComics', () => {
       status: 'OK',
       data: {
         results: [
-          {
-            id: 1,
-            title: 'any_title',
-            description: 'any_description',
-            thumbnail: {
-              path: 'any_cover',
-              extension: 'jpg'
-            },
-            dates: [
-              {
-                type: 'onsaleDate',
-                date: 'any_publishedAt'
-              }
-            ],
-            creators: {
-              items: [
-                {
-                  role: 'writer',
-                  name: 'any_writer'
-                },
-                {
-                  role: 'penciler',
-                  name: 'any_penciler'
-                },
-                {
-                  role: 'penciller (cover)',
-                  name: 'any_coverArtist'
-                }
-              ]
-            }
-          }
+          makeFakeComic()
         ]
       }
     }
