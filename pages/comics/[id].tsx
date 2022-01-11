@@ -15,7 +15,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     offset: Math.floor(Math.random() * 1000)
   })
 
-  const paths = comics.data.results.map(comic => {
+  const paths = comics.map(comic => {
     return {
       params: {
         id: String(comic.id)
@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps = withSSGErrorHandler(async ctx => {
   return {
     props: {
       comic,
-      readMore: readMore.data.results
+      readMore: readMore
     },
     revalidate: 60 * 60 * 24 * 30
   }

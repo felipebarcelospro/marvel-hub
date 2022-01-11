@@ -41,11 +41,11 @@ export const getStaticProps: GetStaticProps = async ctx => {
 
   return {
     props: {
-      characters: characters.data.results,
-      comics: comics.data.results,
-      featuredComics: featuredComics.data.results,
-      spiderManComics: spiderManComics.data.results,
-      ironManComics: ironManComics.data.results
+      characters: characters,
+      comics: comics,
+      featuredComics: featuredComics,
+      spiderManComics: spiderManComics,
+      ironManComics: ironManComics
     },
     revalidate: 60 * 60 * 24 * 30
   }

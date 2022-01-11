@@ -4,7 +4,7 @@ import NextLink from 'next/link'
 import { Wrapper } from '../wrapper'
 import { MenuLink } from './components/menu-link'
 import { Container, Menu } from './styles'
-import { FiHome, FiSearch } from 'react-icons/fi'
+import { FiHome } from 'react-icons/fi'
 
 export function Header (): React.ReactElement {
   return (
@@ -18,7 +18,6 @@ export function Header (): React.ReactElement {
 
         <Menu>
           <MenuLink path="/" icon={<FiHome />} exact>Main</MenuLink>
-          <MenuLink path="/search" icon={<FiSearch />}>Search</MenuLink>
         </Menu>
       </Wrapper>
     </Container>
