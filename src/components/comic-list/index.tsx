@@ -14,7 +14,7 @@ export function ComicList ({ title, data }: ComicListProps): React.ReactElement 
       <h1>{title}</h1>
       <Grid>
         {data.map((data, index) => (
-          <ComicListItem data={data} />
+          <ComicListItem key={index} data={data} />
         ))}
       </Grid>
     </Container>

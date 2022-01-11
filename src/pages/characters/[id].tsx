@@ -6,12 +6,21 @@ import { Share } from '../../components/share'
 import { Wrapper } from '../../components/wrapper'
 import { AppLayout } from '../../layouts/app-layouts'
 import { Banner, Container } from '../../styles/pages/characters'
+import { Character } from '../../components/character-list/components/character-list-item'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { getMarvelApiClient } from '../../services/marvelApi'
 
-export default function SingleCharacter (): React.ReactElement {
+interface SingleCharacterProps {
+  character: Character
+}
+
+export default function SingleCharacter ({ character }: SingleCharacterProps): React.ReactElement {
+  const { name, description, comics, avatarUrl } = character
+
   return (
     <>
       <NextHead>
-        <title>Marvel Hub - Character</title>
+        <title>Marvel Hub - {name}</title>
       </NextHead>
 
       <AppLayout>
@@ -20,20 +29,24 @@ export default function SingleCharacter (): React.ReactElement {
             <Wrapper>
               <div className='thumbnail-container'>
                 <div className="thumbnail">
-                  <NextImage src='http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg' width={350} height={350} />
+                  <NextImage src={avatarUrl} width={350} height={350} />
                 </div>
               </div>
               <div className='info-container'>
-                <h1>3-D Man</h1>
+                <h1>{name}</h1>
 
-                <hr />
+                {description && (
+                  <>
+                    <hr />
 
-                <div className="item">
-                  <h1>Description:</h1>
-                  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero earum nam assumenda eos, asperiores cupiditate velit ipsam fuga iste sunt rem alias, minus laboriosam neque quia beatae atque. Eos, eaque.</p>
-                </div>
+                    <div className="item">
+                      <h1>Description:</h1>
+                      <p>{description}</p>
+                    </div>
 
-                <br />
+                    <br />
+                  </>
+                )}
 
                 <Share />
               </div>
@@ -42,43 +55,78 @@ export default function SingleCharacter (): React.ReactElement {
 
           <Wrapper>
             <ComicList
-              title="Comics of 3-D Man"
-              data={[
-                {
-                  id: '1',
-                  title: 'Black Widow #13',
-                  cover: 'https://i.annihil.us/u/prod/marvel/i/mg/3/90/61d4c5184d772/portrait_uncanny.jpg',
-                  author: 'Thompson, Pimentel'
-                },
-                {
-                  id: '1',
-                  title: 'The Amazing Spider-Man #84',
-                  cover: 'https://i.annihil.us/u/prod/marvel/i/mg/f/40/61d4c41cded7e/portrait_uncanny.jpg',
-                  author: 'Ziglar, Medina'
-                },
-                {
-                  id: '1',
-                  title: 'Wastelanders: Doom #1',
-                  cover: 'https://i.annihil.us/u/prod/marvel/i/mg/9/70/61d4c517ae86c/portrait_uncanny.jpg',
-                  author: 'Gronbekk, Ohta'
-                },
-                {
-                  id: '1',
-                  title: 'Shang-Chi #7',
-                  cover: 'https://i.annihil.us/u/prod/marvel/i/mg/c/00/61d4c4fa11be9/portrait_uncanny.jpg',
-                  author: 'Yang, Ruan'
-                },
-                {
-                  id: '1',
-                  title: 'Captain Marvel #35',
-                  cover: 'https://i.annihil.us/u/prod/marvel/i/mg/3/d0/61d4c4386681f/portrait_uncanny.jpg',
-                  author: 'Thompson, Davila'
-                }
-              ]}
+              title={`Comics of ${name}`}
+              data={comics}
             />
           </Wrapper>
         </Container>
       </AppLayout>
     </>
   )
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const marvelApi = getMarvelApiClient()
+  const { data: responseData } = await marvelApi.get('/characters', {
+    params: {
+      limit: 5
+    }
+  })
+
+  const characters = responseData.data.results
+
+  const paths = characters.map(character => {
+    return {
+      params: {
+        id: String(character.id)
+      }
+    }
+  })
+
+  return {
+    paths,
+    fallback: 'blocking'
+  }
+}
+
+export const getStaticProps: GetStaticProps = async ctx => {
+  const marvelApi = getMarvelApiClient()
+
+  const { id } = ctx.params
+  const { data: responseData } = await marvelApi.get(`/characters/${String(id)}`)
+
+  if (responseData.code !== 200) {
+    return {
+      notFound: true
+    }
+  }
+
+  const { data: responseComicsData } = await marvelApi.get(`/characters/${String(id)}/comics`)
+
+  const comicsData = responseComicsData.data.results
+  const characterData = responseData.data.results[0]
+
+  const comics = comicsData.map(comic => {
+    return {
+      id: comic.id,
+      title: comic.title,
+      cover: `${comic.thumbnail.path}.${comic.thumbnail.extension}`,
+      description: comic.description,
+      author: comic.creators.items[0]?.name ?? null
+    }
+  })
+
+  const character = {
+    id: characterData.id,
+    avatarUrl: `${characterData.thumbnail.path}.${characterData.thumbnail.extension}`,
+    name: characterData.name,
+    description: characterData.description,
+    comics: comics
+  }
+
+  return {
+    props: {
+      character
+    }
+  }
 }

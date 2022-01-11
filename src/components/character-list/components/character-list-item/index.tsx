@@ -1,12 +1,15 @@
 import NextLink from 'next/link'
 
+import { Comic } from '../../../comic-list/components/comic-list-item'
 import { Container } from './styles'
 
 export interface Character {
   id: string
   avatarUrl: string
   name: string
-  comicsCount: string
+  description: string
+  comicsCount: number
+  comics: Comic[]
 }
 
 interface CharacterListItemProps {

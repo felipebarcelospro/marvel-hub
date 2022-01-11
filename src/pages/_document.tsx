@@ -53,9 +53,9 @@ export default class MyDocument extends Document<MyDocumentProps> {
           <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"/>
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
           <link rel="manifest" href="/manifest.json"/>
-          <meta name="msapplication-TileColor" content="#ED1D24"/>
+          <meta name="msapplication-TileColor" content="#121520"/>
           <meta name="msapplication-TileImage" content="/ms-icon-144x144.png"/>
-          <meta name="theme-color" content="#ED1D24"/>
+          <meta name="theme-color" content="#121520"/>
 
           {this.props.styleTags}
         </Head>

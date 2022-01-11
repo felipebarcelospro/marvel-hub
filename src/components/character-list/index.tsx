@@ -11,16 +11,8 @@ export function CharacterList ({ title, data }: CharacterListProps): React.React
     <Container>
       <h1>{title}</h1>
       <Grid>
-        {data.map(({ id, avatarUrl, name, comicsCount }, index) => (
-          <CharacterListItem
-            key={index}
-            data={{
-              id,
-              avatarUrl,
-              name,
-              comicsCount
-            }}
-          />
+        {data.map((character, index) => (
+          <CharacterListItem key={index} data={character} />
         ))}
       </Grid>
     </Container>

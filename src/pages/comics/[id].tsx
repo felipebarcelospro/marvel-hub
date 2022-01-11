@@ -6,12 +6,27 @@ import { Share } from '../../components/share'
 import { Wrapper } from '../../components/wrapper'
 import { AppLayout } from '../../layouts/app-layouts'
 import { Container, Banner } from '../../styles/pages/comics'
+import { Comic } from '../../components/comic-list/components/comic-list-item'
+import { getMarvelApiClient } from '../../services/marvelApi'
+import { GetStaticPaths, GetStaticProps } from 'next'
 
-export default function SingleComic (): React.ReactElement {
+interface SingleComicProps {
+  id: number
+  title: string
+  cover: string
+  publishedAt: string
+  writer: string
+  penciler: string
+  coverArtist: string
+  description: string
+  readMore: Comic[]
+}
+
+export default function SingleComic (props: SingleComicProps): React.ReactElement {
   return (
     <>
       <NextHead>
-        <title>Marvel Hub - Comic</title>
+        <title>Marvel Hub - {props.title}</title>
       </NextHead>
 
       <AppLayout>
@@ -19,14 +34,14 @@ export default function SingleComic (): React.ReactElement {
           <Banner>
             <Wrapper>
               <div className='thumbnail-container'>
-                <NextImage src='https://i.annihil.us/u/prod/marvel/i/mg/5/c0/61ae1d0674d31/clean.jpg' width={350} height={540} />
+                <NextImage src={props.cover} width={350} height={540} />
               </div>
               <div className='info-container'>
-                <h1>Star Wars: Doctor Aphra (2020) #17</h1>
+                <h1>{props.title}</h1>
 
                 <div className="item">
                   <h1>Published:</h1>
-                  <h2>January 05, 2022</h2>
+                  <h2>{props.publishedAt}</h2>
                 </div>
 
                 <hr />
@@ -35,14 +50,14 @@ export default function SingleComic (): React.ReactElement {
                   <div className="col-md">
                     <div className="item">
                       <h1>Writer:</h1>
-                      <h2>Alyssa Wong</h2>
+                      <h2>{props.writer}</h2>
                     </div>
                   </div>
 
                   <div className="col-md">
                     <div className="item">
                       <h1>Penciler:</h1>
-                      <h2>Minkyu Jung</h2>
+                      <h2>{props.penciler}</h2>
                     </div>
                   </div>
                 </div>
@@ -51,15 +66,19 @@ export default function SingleComic (): React.ReactElement {
 
                 <div className="item">
                   <h1>Cover Artist:</h1>
-                  <h2>Sara Pichelli</h2>
+                  <h2>{props.coverArtist}</h2>
                 </div>
 
-                <hr />
+                {props.description && (
+                  <>
+                    <hr />
 
-                <div className="item">
-                  <h1>Cover Artist:</h1>
-                  <p>EVOCATIONS! DOCTOR APHRA and SANA STARROS stumble upon a STRANGE RITUAL...And STRANGER ENEMY! Will they fall victim to a practitioner of an ANCIENT CULT?</p>
-                </div>
+                    <div className="item">
+                      <h1>Description:</h1>
+                      <p>{props.description}</p>
+                    </div>
+                  </>
+                )}
 
                 <br />
 
@@ -69,44 +88,81 @@ export default function SingleComic (): React.ReactElement {
           </Banner>
 
           <Wrapper>
-            <ComicList
-              title="Best of Spider Man"
-              data={[
-                {
-                  id: '1',
-                  title: 'Black Widow #13',
-                  cover: 'https://i.annihil.us/u/prod/marvel/i/mg/3/90/61d4c5184d772/portrait_uncanny.jpg',
-                  author: 'Thompson, Pimentel'
-                },
-                {
-                  id: '1',
-                  title: 'The Amazing Spider-Man #84',
-                  cover: 'https://i.annihil.us/u/prod/marvel/i/mg/f/40/61d4c41cded7e/portrait_uncanny.jpg',
-                  author: 'Ziglar, Medina'
-                },
-                {
-                  id: '1',
-                  title: 'Wastelanders: Doom #1',
-                  cover: 'https://i.annihil.us/u/prod/marvel/i/mg/9/70/61d4c517ae86c/portrait_uncanny.jpg',
-                  author: 'Gronbekk, Ohta'
-                },
-                {
-                  id: '1',
-                  title: 'Shang-Chi #7',
-                  cover: 'https://i.annihil.us/u/prod/marvel/i/mg/c/00/61d4c4fa11be9/portrait_uncanny.jpg',
-                  author: 'Yang, Ruan'
-                },
-                {
-                  id: '1',
-                  title: 'Captain Marvel #35',
-                  cover: 'https://i.annihil.us/u/prod/marvel/i/mg/3/d0/61d4c4386681f/portrait_uncanny.jpg',
-                  author: 'Thompson, Davila'
-                }
-              ]}
-            />
+            <ComicList title="Read More" data={props.readMore} />
           </Wrapper>
         </Container>
       </AppLayout>
     </>
   )
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const marvelApi = getMarvelApiClient()
+  const { data: responseData } = await marvelApi.get('/comics', {
+    params: {
+      limit: 5,
+      offset: Math.floor(Math.random() * 1000)
+    }
+  })
+
+  const comics = responseData.data.results
+
+  const paths = comics.map(comic => {
+    return {
+      params: {
+        id: String(comic.id)
+      }
+    }
+  })
+
+  return {
+    paths,
+    fallback: 'blocking'
+  }
+}
+
+export const getStaticProps: GetStaticProps = async ctx => {
+  const marvelApi = getMarvelApiClient()
+
+  const { id } = ctx.params
+  const { data: responseData } = await marvelApi.get(`/comics/${String(id)}`)
+
+  if (responseData.code !== 200) {
+    return {
+      notFound: true
+    }
+  }
+
+  const { data: responseComicsData } = await marvelApi.get('/comics', {
+    params: {
+      offset: Math.floor(Math.random() * 1000)
+    }
+  })
+
+  const comicData = responseData.data.results[0]
+  const comicsData = responseComicsData.data.results
+  const readMoreData = comicsData.filter(comic => comic.id !== comicData.id)
+
+  return {
+    props: {
+      id: comicData.id,
+      title: comicData.title,
+      cover: comicData.thumbnail.path + '.' + comicData.thumbnail.extension,
+      publishedAt: comicData.dates[0].date,
+      description: comicData.description,
+      writer: comicData.creators.items.find(creator => creator.role === 'writer')?.name ?? 'Unknown',
+      penciler: comicData.creators.items.find(creator => creator.role === 'penciler')?.name ?? 'Unknown',
+      coverArtist: comicData.creators.items.find(creator => creator.role === 'penciler')?.name ?? 'Unknown',
+      readMore: readMoreData.map(comic => {
+        return {
+          id: comic.id,
+          title: comic.title,
+          cover: `${comic.thumbnail.path}.${comic.thumbnail.extension}`,
+          description: comic.description,
+          author: comicData.creators.items.find(creator => creator.role === 'writer')?.name ?? 'Unknown'
+        }
+      })
+    },
+    revalidate: 60 * 60 * 24 * 30
+  }
 }
