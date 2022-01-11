@@ -1,3 +1,4 @@
+import { UnexpectedError } from '../../domain/errors/unexpected-error'
 import { LoadComicsList } from '../../domain/usecases/load-comics'
 import { HttpClientSpy } from '../../main/factories/http/mock-http-client'
 import { MarvelHttpResponse } from '../protocols/http/marvel-http-response'
@@ -73,6 +74,17 @@ describe('RemoteLoadComics', () => {
     await sut.execute(params)
 
     expect(httpClient.params).toEqual(params)
+  })
+
+  // ensure call unexpected error if httpClient returns an error
+  it('should throw a unexpected error if httpClient returns a statusCode diferent of 200', async () => {
+    const { sut, httpClient } = makeSut()
+
+    httpClient.response.statusCode = 500
+
+    const promise = sut.execute()
+
+    await expect(promise).rejects.toEqual(new UnexpectedError())
   })
 })
 
