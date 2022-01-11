@@ -1,12 +1,11 @@
 import { UnexpectedError } from '../../domain/errors/unexpected-error'
-import { LoadComicsList } from '../../domain/usecases/load-comics'
 import { HttpClientSpy } from '../../main/factories/http/mock-http-client'
 import { MarvelHttpResponse } from '../protocols/http/marvel-http-response'
 import { RemoteLoadComicsList } from './remote-load-comics'
 
 interface Sut {
   sut: RemoteLoadComicsList
-  httpClient: HttpClientSpy<MarvelHttpResponse<LoadComicsList.Model[]>>
+  httpClient: HttpClientSpy<MarvelHttpResponse>
 }
 
 const makeSut = (): Sut => {
@@ -76,7 +75,6 @@ describe('RemoteLoadComics', () => {
     expect(httpClient.params).toEqual(params)
   })
 
-  // ensure call unexpected error if httpClient returns an error
   it('should throw a unexpected error if httpClient returns a statusCode diferent of 200', async () => {
     const { sut, httpClient } = makeSut()
 
@@ -85,6 +83,62 @@ describe('RemoteLoadComics', () => {
     const promise = sut.execute()
 
     await expect(promise).rejects.toEqual(new UnexpectedError())
+  })
+
+  it('should return a comic', async () => {
+    const { sut, httpClient } = makeSut()
+
+    httpClient.response.body = {
+      code: 200,
+      status: 'OK',
+      data: {
+        results: [
+          {
+            id: 1,
+            title: 'any_title',
+            description: 'any_description',
+            thumbnail: {
+              path: 'any_cover',
+              extension: 'jpg'
+            },
+            dates: [
+              {
+                type: 'onsaleDate',
+                date: 'any_publishedAt'
+              }
+            ],
+            creators: {
+              items: [
+                {
+                  role: 'writer',
+                  name: 'any_writer'
+                },
+                {
+                  role: 'penciler',
+                  name: 'any_penciler'
+                },
+                {
+                  role: 'penciller (cover)',
+                  name: 'any_coverArtist'
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+
+    const comics = await sut.execute()
+    const firstComic = comics[0]
+
+    expect(firstComic.id).toBe(1)
+    expect(firstComic.title).toBe('any_title')
+    expect(firstComic.description).toBe('any_description')
+    expect(firstComic.cover).toBe('any_cover.jpg')
+    expect(firstComic.publishedAt).toBe('any_publishedAt')
+    expect(firstComic.writer).toBe('any_writer')
+    expect(firstComic.penciler).toBe('any_penciler')
+    expect(firstComic.coverArtist).toBe('any_coverArtist')
   })
 })
 

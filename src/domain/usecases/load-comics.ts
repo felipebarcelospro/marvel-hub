@@ -1,5 +1,3 @@
-import { MarvelHttpResponse } from '../../data/protocols/http/marvel-http-response'
-
 export interface LoadComicsListDTO {
   titleStartsWith?: number
   limit?: number
@@ -10,7 +8,7 @@ export interface LoadComicsListDTO {
 }
 
 export interface LoadComicsList {
-  execute: (params?: LoadComicsListDTO) => Promise<MarvelHttpResponse<LoadComicsList.Model[]>>
+  execute: (params?: LoadComicsListDTO) => Promise<LoadComicsList.Model[]>
 }
 
 export namespace LoadComicsList {

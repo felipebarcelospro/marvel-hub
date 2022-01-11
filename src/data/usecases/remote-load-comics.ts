@@ -1,15 +1,14 @@
 import { UnexpectedError } from '../../domain/errors/unexpected-error'
-import { ComicModel } from '../../domain/models/comic'
-import { LoadComicsListDTO } from '../../domain/usecases/load-comics'
+import { LoadComicsList, LoadComicsListDTO } from '../../domain/usecases/load-comics'
 import { HttpClient, HttpStatusCode } from '../protocols/http/http-client'
 import { MarvelHttpResponse } from '../protocols/http/marvel-http-response'
 
-export class RemoteLoadComicsList {
+export class RemoteLoadComicsList implements LoadComicsList {
   constructor (
-    private readonly httpClient: HttpClient<MarvelHttpResponse<ComicModel[]>>
+    private readonly httpClient: HttpClient<MarvelHttpResponse>
   ) {}
 
-  async execute (params?: LoadComicsListDTO): Promise<MarvelHttpResponse<ComicModel[]>> {
+  async execute (params?: LoadComicsListDTO): Promise<LoadComicsList.Model[]> {
     const httpResponse = await this.httpClient.request({
       url: '/comics',
       method: 'get',
@@ -20,7 +19,7 @@ export class RemoteLoadComicsList {
       throw new UnexpectedError()
     }
 
-    httpResponse.body.data.results = httpResponse.body.data.results.map((comic: any) => {
+    return httpResponse.body.data.results.map((comic: any) => {
       return {
         id: comic.id,
         title: comic.title,
@@ -32,7 +31,5 @@ export class RemoteLoadComicsList {
         description: comic.description
       }
     })
-
-    return httpResponse.body
   }
 }
