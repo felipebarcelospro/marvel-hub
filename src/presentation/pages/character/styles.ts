@@ -12,7 +12,7 @@ export const Banner = styled.section`
     grid-template-columns: 1fr 4fr;
     grid-gap: var(--space-lg);
 
-    @media (max-width: 720px) {
+    @media (max-width: 800px) {
       grid-template-columns: 1fr;
     }
 
@@ -33,7 +33,7 @@ export const Banner = styled.section`
       > h1 {
         font-size: 1.8rem;
         margin-bottom: var(--space-lg);
-        line-height: 150%;
+        line-height: 140%;
       }
 
       > hr {

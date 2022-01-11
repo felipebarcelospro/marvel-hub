@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
 
-  @media (max-width: 720px) {
+  @media (max-width: 800px) {
     flex-direction: column;
 
     > button {

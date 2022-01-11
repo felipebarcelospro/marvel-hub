@@ -16,7 +16,11 @@ export const Grid = styled.section`
   grid-template-columns: repeat(5, 1fr);
   grid-gap: var(--space-sm);
 
-  @media (max-width: 720px) {
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 800px) {
     padding-bottom: var(--space-md);
   }
 `

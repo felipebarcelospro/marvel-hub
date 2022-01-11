@@ -14,11 +14,11 @@ export const Container = styled.section`
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
-  @media (max-width: 720px) {
+  @media (max-width: 800px) {
     height: 14rem;
   }
 
-  @media (min-width: 720px) {
+  @media (min-width: 800px) {
     :hover {
       border-color: var(--color-white);
       box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px, rgb(0 0 0 / 72%) 0px 30px 22px -10px;
@@ -38,6 +38,10 @@ export const Overlay = styled.div`
 
   h1, h2 {
     font-size: var(--size-xs);
+  }
+
+  h1 {
+    line-height: 120%;
   }
 
   h2 {

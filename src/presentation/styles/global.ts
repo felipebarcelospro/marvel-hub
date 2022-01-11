@@ -119,7 +119,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 800px) {
     html {
       font-size: 87.5%;
     }
@@ -180,8 +180,8 @@ const GlobalStyle = createGlobalStyle`
 
   /* CAROUSEL */
   .carousel-wrapper {
-    @media (max-width: 720px) {
-      display: flex;
+    @media (max-width: 800px) {
+      display: flex!important;
       scroll-snap-type: x mandatory;
       overflow-x: auto;
 

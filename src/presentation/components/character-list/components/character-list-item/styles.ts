@@ -11,11 +11,11 @@ export const Container = styled.article`
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 
-  @media (max-width: 720px) {
+  @media (max-width: 800px) {
     min-width: 22rem;
   }
 
-  @media (min-width: 720px) {
+  @media (min-width: 800px) {
     :hover {
       border-color: var(--color-white);
       box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px, rgb(0 0 0 / 72%) 0px 30px 22px -10px;

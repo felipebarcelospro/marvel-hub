@@ -1,4 +1,5 @@
 import NextHead from 'next/head'
+import { ComicModel } from '../../../domain/models/comic'
 
 import { ComicList } from '../../components/comic-list'
 import { SearchInput } from '../../components/search-input'
@@ -6,7 +7,11 @@ import { Wrapper } from '../../components/wrapper'
 import { AppLayout } from '../../layouts/app-layouts'
 import { Container } from './styles'
 
-export function SearchPage (): React.ReactElement {
+interface SearchPageProps {
+  comics: ComicModel[]
+}
+
+export function SearchPage ({ comics }: SearchPageProps): React.ReactElement {
   return (
     <>
       <NextHead>
@@ -19,7 +24,7 @@ export function SearchPage (): React.ReactElement {
             <SearchInput />
             <ComicList
               title="Explore"
-              data={[]}
+              data={comics}
             />
           </Wrapper>
         </Container>
