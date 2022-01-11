@@ -9,7 +9,7 @@ export class RemoteLoadCharacterById implements LoadCharacterById {
     private readonly httpClient: HttpClient<MarvelHttpResponse<LoadCharacterById.Model[]>>
   ) {}
 
-  async execute (params?: LoadCharacterByIdDTO): Promise<LoadCharacterById.Model> {
+  async execute (params: LoadCharacterByIdDTO): Promise<LoadCharacterById.Model> {
     const httpResponse = await this.httpClient.request({
       url: `/characters/${params.id}`,
       method: 'get'

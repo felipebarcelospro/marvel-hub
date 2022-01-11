@@ -69,4 +69,28 @@ describe('RemoteLoadCharacterById', () => {
 
     expect(httpClient.method).toBe('get')
   })
+
+  it('should return a character on success', async () => {
+    const { sut, httpClient } = makeSut()
+
+    httpClient.response.body = {
+      code: 200,
+      status: 'ok',
+      data: {
+        results: [
+          makeFakeCharacter()
+        ]
+      }
+    }
+
+    const character = await sut.execute({ id: '1' })
+
+    expect(character).toEqual({
+      id: '1',
+      name: 'any_name',
+      description: 'any_description',
+      cover: 'any_cover.jpg',
+      comicsCount: 10
+    })
+  })
 })
