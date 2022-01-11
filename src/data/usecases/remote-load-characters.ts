@@ -5,10 +5,10 @@ import { MarvelHttpResponse } from '../protocols/http/marvel-http-response'
 
 export class RemoteLoadCharactersList implements LoadCharactersList {
   constructor (
-    private readonly httpClient: HttpClient<MarvelHttpResponse<LoadCharactersList.Model[]>>
+    private readonly httpClient: HttpClient<MarvelHttpResponse>
   ) {}
 
-  async execute (params?: LoadCharactersListDTO): Promise<MarvelHttpResponse<LoadCharactersList.Model[]>> {
+  async execute (params?: LoadCharactersListDTO): Promise<LoadCharactersList.Model[]> {
     const httpResponse = await this.httpClient.request({
       url: '/characters',
       method: 'get',
@@ -19,7 +19,7 @@ export class RemoteLoadCharactersList implements LoadCharactersList {
       throw new UnexpectedError()
     }
 
-    httpResponse.body.data.results = httpResponse.body.data.results.map((character: any) => {
+    return httpResponse.body.data.results.map((character: any) => {
       return {
         id: character.id,
         cover: `${character.thumbnail.path}.${character.thumbnail.extension}`,
@@ -28,7 +28,5 @@ export class RemoteLoadCharactersList implements LoadCharactersList {
         comicsCount: character.comics.available
       }
     })
-
-    return httpResponse.body
   }
 }
