@@ -1,6 +1,6 @@
 import { LoadComicById, LoadComicByIdDTO } from '../../domain/usecases/load-comic-by-id'
 import { HttpClient, HttpStatusCode } from '../protocols/http/http-client'
-import { MarvelHttpResponse } from '../protocols/http/marvel-http-client'
+import { MarvelHttpResponse } from '../protocols/http/marvel-http-response'
 
 export class RemoteLoadComicById implements LoadComicById {
   constructor (

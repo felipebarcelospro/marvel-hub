@@ -1,7 +1,7 @@
 import { ComicModel } from '../../domain/models/comic'
 import { LoadComicsListDTO } from '../../domain/usecases/load-comics'
 import { HttpClient, HttpStatusCode } from '../protocols/http/http-client'
-import { MarvelHttpResponse } from '../protocols/http/marvel-http-client'
+import { MarvelHttpResponse } from '../protocols/http/marvel-http-response'
 
 export class RemoteLoadComicsList {
   constructor (

@@ -1,6 +1,6 @@
 import { LoadCharactersList, LoadCharactersListDTO } from '../../domain/usecases/load-characters'
 import { HttpClient, HttpStatusCode } from '../protocols/http/http-client'
-import { MarvelHttpResponse } from '../protocols/http/marvel-http-client'
+import { MarvelHttpResponse } from '../protocols/http/marvel-http-response'
 
 export class RemoteLoadCharactersList implements LoadCharactersList {
   constructor (

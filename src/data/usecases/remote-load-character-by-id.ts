@@ -1,6 +1,6 @@
 import { LoadCharacterById, LoadCharacterByIdDTO } from '../../domain/usecases/load-characters-by-id'
 import { HttpClient, HttpStatusCode } from '../protocols/http/http-client'
-import { MarvelHttpResponse } from '../protocols/http/marvel-http-client'
+import { MarvelHttpResponse } from '../protocols/http/marvel-http-response'
 
 export class RemoteLoadCharacterById implements LoadCharacterById {
   constructor (
