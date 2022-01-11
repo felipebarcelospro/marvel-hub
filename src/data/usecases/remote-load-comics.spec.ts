@@ -53,6 +53,27 @@ describe('RemoteLoadComics', () => {
 
     expect(httpClient.method).toBe('get')
   })
+
+  it('should call httpClient with correct params', async () => {
+    const { sut, httpClient } = makeSut()
+
+    const params = {
+      offset: 1,
+      limit: 2
+    }
+
+    httpClient.response.body = {
+      code: 200,
+      status: 'OK',
+      data: {
+        results: []
+      }
+    }
+
+    await sut.execute(params)
+
+    expect(httpClient.params).toEqual(params)
+  })
 })
 
 export {}
