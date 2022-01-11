@@ -1,0 +1,51 @@
+{
+  "name": "marvel-hub",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest --passWithNoTests --no-cache --runInBand",
+    "test:watch": "npm test -- --watch",
+    "test:staged": "npm test -- --findRelatedTests"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "md5": "^2.3.0",
+    "next": "12.0.7",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.3.1",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/faker": "^5.1.2",
+    "@types/jest": "^27.4.0",
+    "@types/md5": "^2.3.1",
+    "@types/node": "^17.0.8",
+    "@types/react": "^17.0.38",
+    "@types/styled-components": "^5.1.19",
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "babel-plugin-styled-components": "^2.0.2",
+    "eslint": "^8.6.0",
+    "eslint-config-next": "12.0.7",
+    "eslint-config-standard-with-typescript": "^21.0.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-standard": "^5.0.0",
+    "faker": "^5.1.0",
+    "git-commit-msg-linter": "3.2.8",
+    "husky": "^7.0.2",
+    "jest": "^27.4.7",
+    "lint-staged": "^11.1.2",
+    "ts-jest": "^27.1.2",
+    "typescript": "^4.5.4"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/StartecJobsDev/reactjs-test.git",
+  "author": "Felipe Barcelos <felipebarcelospro@gmail.com>",
+  "license": "MIT"
+}

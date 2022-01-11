@@ -1,34 +1,39 @@
-# Teste técnico
 
-Como parte do processo seletivo da Startec Jobs, utilizamos esse desafio técnico para avaliar seus conhecimento técnicos e habilidades com o requisito da vaga, lembrando apenas, que claro, o teste deve ser feito por você e apenas você, no conforto de seu lar!
+![Logo](https://marvel-hub.vercel.app/_next/image?url=%2Flogo.svg&w=96&q=75)
 
-## Descrição do desafio
+A hub of all Marvel comics featuring your favorite heroes created with NextJS.
+[marvel-hub.io](https://marvel-hub.vercel.app)
 
-O desafio consiste em criar uma aplicação client-side escalável, utilizando a biblioteca React, que faça consultas e consuma uma API externa, nesse cenário, sendo da Marvel, seguindo as diretrizes mencionadas logo abaixo e o protótipo desenvolvido especialmente para esse desafio. Utilize sua criatividade para compor as telas e as funcionalidades. Lembre-se de utilizar componentes. Mínimo de 4 telas
+![App Screenshot](https://marvel-hub.vercel.app/public/cover.png)
 
-### API Marvel
+## Stack
 
+**Front-end:** NextJs, Jest, Styled Components
+
+
+## Run in Locally
+
+Install *Marvel Hub* with yarn
+
+```bash
+  git clone https://github.com/felipebarcelospro/marvel-hub.git
+  cd marvel-hub
+  yarn && yarn dev
 ```
-https://developer.marvel.com
-``` 
+    
+## Run Tests
 
-### Requisitos
-A sua aplicação deve atender os seguintes requisitos.
+To run the tests, run the following command
 
-- ReactJS
-- Typescript
-- Styled Components
-- Lint
-- Testes
-- Arquitetura desacoplada para implementação da API
-- Readme organizado 
+```bash
+  yarn test
+```
 
-#### Diferencial
 
-- Deploy via Github para algum provider (AWS, GCP, Microsoft Azure)
-- Utilização do conceito hexagonal
+## Support
 
-#### Entrega
+For support, send an email to felipebarcelospro@gmail.com.
 
-- Faça um PR para este repositório com sua solução. Até a data informada.
-- Seu repositório deve estar sendo utilizado com o padrão Gitflow
+## Licença
+
+[MIT](https://choosealicense.com/licenses/mit/)
