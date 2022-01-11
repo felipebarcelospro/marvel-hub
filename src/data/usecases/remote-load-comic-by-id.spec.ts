@@ -123,6 +123,26 @@ describe('RemoteLoadComicById', () => {
 
     await expect(promise).rejects.toEqual(new EntityNotFound('Comic'))
   })
+
+  it('should call httpClient with correct method', async () => {
+    const { sut, httpClient } = makeSut()
+
+    httpClient.response.body = {
+      code: 200,
+      status: 'OK',
+      data: {
+        results: [
+          makeFakeComic()
+        ]
+      }
+    }
+
+    await sut.execute({
+      id: '1'
+    })
+
+    expect(httpClient.method).toBe('get')
+  })
 })
 
 export {}
