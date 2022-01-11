@@ -1,4 +1,5 @@
 import { EntityNotFound } from '../../domain/errors/entity-not-found'
+import { UnexpectedError } from '../../domain/errors/unexpected-error'
 import { LoadComicById, LoadComicByIdDTO } from '../../domain/usecases/load-comic-by-id'
 import { HttpClient, HttpStatusCode } from '../protocols/http/http-client'
 import { MarvelHttpResponse } from '../protocols/http/marvel-http-response'
@@ -15,7 +16,7 @@ export class RemoteLoadComicById implements LoadComicById {
     })
 
     if (httpResponse.statusCode !== HttpStatusCode.ok) {
-      throw new Error(`Unexpected status code - ERROR ${httpResponse.statusCode}`)
+      throw new UnexpectedError()
     }
 
     const comicData: any = httpResponse.body.data.results[0]
