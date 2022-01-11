@@ -1,21 +1,15 @@
 import NextImage from 'next/image'
 import NextLink from 'next/link'
 
+import { ComicModel } from '../../../../../domain/models/comics'
 import { Container } from './styles'
 
-export interface Comic {
-  id: string
-  cover: string
-  title: string
-  author: string
-}
-
 interface ComicListItemProps {
-  data: Comic
+  data: ComicModel
 }
 
 export function ComicListItem ({ data }: ComicListItemProps): React.ReactElement {
-  const { id, cover, title, author } = data
+  const { id, cover, title, writer } = data
 
   return (
     <NextLink href={`/comics/${id}`}>
@@ -24,7 +18,7 @@ export function ComicListItem ({ data }: ComicListItemProps): React.ReactElement
 
         <div className="info">
           <h1>{title}</h1>
-          <h2>By {author}</h2>
+          <h2>By {writer}</h2>
         </div>
       </Container>
     </NextLink>

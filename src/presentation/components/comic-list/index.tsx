@@ -1,11 +1,12 @@
 import React from 'react'
-import { Comic, ComicListItem } from './components/comic-list-item'
 
+import { ComicModel } from '../../../domain/models/comics'
+import { ComicListItem } from './components/comic-list-item'
 import { Container, Grid } from './styles'
 
 interface ComicListProps {
   title: string
-  data: Comic[]
+  data: ComicModel[]
 }
 
 export function ComicList ({ title, data }: ComicListProps): React.ReactElement {

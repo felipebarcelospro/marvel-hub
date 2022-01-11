@@ -1,10 +1,10 @@
 import NextHead from 'next/head'
 
-import { ComicList } from '../components/comic-list'
-import { SearchInput } from '../components/search-input'
-import { Wrapper } from '../components/wrapper'
-import { AppLayout } from '../layouts/app-layouts'
-import { Container } from '../styles/pages/search'
+import { ComicList } from '../src/presentation/components/comic-list'
+import { SearchInput } from '../src/presentation/components/search-input'
+import { Wrapper } from '../src/presentation/components/wrapper'
+import { AppLayout } from '../src/presentation/layouts/app-layouts'
+import { Container } from '../src/presentation/styles/pages/search'
 
 export default function Search (): React.ReactElement {
   return (

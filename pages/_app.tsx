@@ -1,6 +1,6 @@
 
 import { ThemeProvider } from 'styled-components'
-import { GlobalStyle } from '../styles/global'
+import { GlobalStyle } from '../src/presentation/styles/global'
 
 function MyApp ({ Component, pageProps }): React.ReactElement {
   return (
