@@ -137,43 +137,77 @@ const GlobalStyle = createGlobalStyle`
     font-family: sans-serif;
   }
 
-  .row {
+
+  /* BUTTONS */
+
+  .btn {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 
-    & > * {
-      margin: 0 var(--space-sm);
+    border: 0;
+    border-radius: var(--radius-base);
+    font-size: var(--font-size-md);
 
-      &:first-child {
-        margin-left: 0;
-        margin-right: var(--space-sm);
+    height: var(--size-md);
+    padding: var(--space-md);
+
+    transition: background-color ease-in 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+
+    font-weight: 500;
+
+    &.btn-primary {
+      background: var(--color-primary-500);
+      color: var(--color-white);
+
+      box-shadow: var(--shadow);
+
+      &:hover {
+        background: var(--color-primary-400);
       }
+    }
 
-      &:last-child {
-        margin-left: var(--space-sm);
+    &.btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--color-white);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    &.btn-sm {
+      height: var(--size-sm) !important;
+      padding: var(--space-sm) !important;
+    }
+
+    &.btn-md {
+      height: var(--size-md) !important;
+      padding: var(--space-md) !important;
+    }
+
+    &.btn-lg {
+      height: var(--size-lg) !important;
+      padding: var(--space-lg) !important;
+    }
+
+    &.only-icon {
+      svg {
         margin-right: 0;
       }
-
-      @media only screen and (max-width: 468px) {
-        padding: 0;
-        width: 100% !important;
-      }
     }
 
-    .col-sm {
-      width: calc(25% - var(--space-sm)) !important;
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
-    .col-md {
-      width: calc(50% - var(--space-sm)) !important;
-    }
-
-    .col-lg {
-      width: calc(75% - var(--space-sm)) !important;
-    }
-
-    .col-xl {
-      width: calc(100% - var(--space-sm)) !important;
+    svg {
+      margin-right: var(--space-sm);
     }
   }
 `

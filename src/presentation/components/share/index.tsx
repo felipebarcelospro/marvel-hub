@@ -23,11 +23,11 @@ export function Share (): React.ReactElement {
 
   return (
     <Container>
-      <button onClick={shareOnFacebook}>
+      <button className="btn btn-outline" onClick={shareOnFacebook}>
         <FiFacebook />
         Share on Facebook
       </button>
-      <button onClick={shareOnTwitter}>
+      <button className="btn btn-outline" onClick={shareOnTwitter}>
         <FiTwitter />
         Share on Twitter
       </button>

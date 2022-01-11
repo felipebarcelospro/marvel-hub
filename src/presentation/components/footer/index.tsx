@@ -8,9 +8,9 @@ export function Footer (): React.ReactElement {
       <Wrapper>
         <span>Created By <b>@felipebarcelospro</b></span>
 
-        <a href="#">
+        <a className="btn btn-outline" href="#">
           <FiGithub />
-          Open on <b>Github</b>
+          Open on Github
         </a>
       </Wrapper>
     </Container>

@@ -21,7 +21,7 @@ export function ErrorPage (): React.ReactElement {
               <p>I think you've reached the edge of the universe. The page you requested was not found.</p>
 
               <NextLink href="/" passHref>
-                <a>Back to the front page</a>
+                <a className="btn btn-outline btn-lg">Back to the front page</a>
               </NextLink>
             </div>
           </Wrapper>

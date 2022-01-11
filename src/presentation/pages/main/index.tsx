@@ -2,14 +2,14 @@ import NextHead from 'next/head'
 
 import { Banner } from '../../components/banner'
 import { CharacterList } from '../../components/character-list'
-import { Character } from '../../components/character-list/components/character-list-item'
 import { ComicList } from '../../components/comic-list'
 import { Wrapper } from '../../components/wrapper'
 import { AppLayout } from '../../layouts/app-layouts'
 import { ComicModel } from '../../../domain/models/comic'
+import { CharacterModel } from '../../../domain/models/character'
 
 interface MainPageProps {
-  characters: Character[]
+  characters: CharacterModel[]
   comics: ComicModel[]
   spiderManComics: ComicModel[]
   ironManComics: ComicModel[]
