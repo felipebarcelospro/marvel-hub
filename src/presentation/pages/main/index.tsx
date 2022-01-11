@@ -26,10 +26,10 @@ export function MainPage ({ characters, comics, spiderManComics, ironManComics, 
       <AppLayout>
         <Wrapper>
           <Banner
-            href="#"
+            href="/comics/6830"
             src="/banner-spiderman.webp"
-            title="The Amazing Spider-Man (2018) #74"
-            createdAt="09 Jan 2022"
+            title="The Amazing Spider-Man (1963) #412"
+            createdAt="1996-06-01T00:00:00-0400"
           />
           <CharacterList title="BEST CHARACTERS" data={characters} />
 
