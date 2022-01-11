@@ -9,22 +9,8 @@ export default function SingleComic (props): React.ReactElement {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const remoteLoadComics = makeRemoteLoadComicsList()
-  const comics = await remoteLoadComics.execute({
-    limit: 5,
-    offset: Math.floor(Math.random() * 1000)
-  })
-
-  const paths = comics.map(comic => {
-    return {
-      params: {
-        id: String(comic.id)
-      }
-    }
-  })
-
   return {
-    paths,
+    paths: [],
     fallback: 'blocking'
   }
 }

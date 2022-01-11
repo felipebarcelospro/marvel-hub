@@ -9,22 +9,8 @@ export default function SingleCharacter (props): React.ReactElement {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const remoteLoadCharacters = makeRemoteLoadComicsList()
-  const characters = await remoteLoadCharacters.execute({
-    limit: 10,
-    offset: Math.floor(Math.random() * 100)
-  })
-
-  const paths = characters.map(character => {
-    return {
-      params: {
-        id: String(character.id)
-      }
-    }
-  })
-
   return {
-    paths,
+    paths: [],
     fallback: 'blocking'
   }
 }
