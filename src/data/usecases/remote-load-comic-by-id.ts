@@ -31,7 +31,7 @@ export class RemoteLoadComicById implements LoadComicById {
       publishedAt: comicData.dates[0].date,
       writer: comicData.creators.items.find(creator => creator.role === 'writer')?.name ?? 'Unknown',
       penciler: comicData.creators.items.find(creator => creator.role === 'penciler')?.name ?? 'Unknown',
-      coverArtist: comicData.creators.items.find(creator => creator.role === 'penciler')?.name ?? 'Unknown',
+      coverArtist: comicData.creators.items.find(creator => creator.role === 'penciller (cover)')?.name ?? 'Unknown',
       description: comicData.description,
       comics: []
     }

@@ -70,6 +70,31 @@ describe('RemoteLoadComicById', () => {
 
     expect(httpClient.url).toBe('/comics/1')
   })
+
+  it('should return a comic on success', async () => {
+    const { sut, httpClient } = makeSut()
+
+    httpClient.response.body = {
+      code: 200,
+      status: 'OK',
+      data: {
+        results: [
+          makeFakeComic()
+        ]
+      }
+    }
+
+    const comic = await sut.execute({ id: '1' })
+
+    expect(comic.id).toBe('1')
+    expect(comic.title).toBe('any_title')
+    expect(comic.description).toBe('any_description')
+    expect(comic.cover).toBe('any_cover.jpg')
+    expect(comic.publishedAt).toBe('any_publishedAt')
+    expect(comic.writer).toBe('any_writer')
+    expect(comic.penciler).toBe('any_penciler')
+    expect(comic.coverArtist).toBe('any_coverArtist')
+  })
 })
 
 export {}
