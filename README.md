@@ -4,7 +4,7 @@
 A hub of all Marvel comics featuring your favorite heroes created with NextJS.
 [marvel-hub.io](https://marvel-hub.vercel.app)
 
-![App Screenshot](https://marvel-hub.vercel.app/public/cover.png)
+![App Screenshot](https://marvel-hub.vercel.app/cover-01.png)
 
 ## Stack
 
