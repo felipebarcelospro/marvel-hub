@@ -46,6 +46,7 @@ export const getStaticProps: GetStaticProps = async ctx => {
       featuredComics: featuredComics,
       spiderManComics: spiderManComics,
       ironManComics: ironManComics
-    }
+    },
+    revalidate: 60 * 60
   }
 }
