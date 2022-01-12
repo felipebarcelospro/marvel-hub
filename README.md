@@ -2,7 +2,7 @@
 ![Logo](https://marvel-hub.vercel.app/_next/image?url=%2Flogo.svg&w=96&q=75)
 
 A hub of all Marvel comics featuring your favorite heroes created with NextJS.
-[marvel-hub.io](https://marvel-hub.vercel.app)
+[marvel-hub.vercel.app](https://marvel-hub.vercel.app)
 
 ![App Screenshot](https://marvel-hub.vercel.app/cover-01.png)
 
