@@ -15,7 +15,7 @@ export const Container = styled.section`
   cursor: pointer;
 
   @media (max-width: 800px) {
-    height: 14rem;
+    height: 20rem;
   }
 
   @media (min-width: 800px) {

@@ -8,6 +8,8 @@ interface CharacterListProps {
 }
 
 export function CharacterList ({ title, data }: CharacterListProps): React.ReactElement {
+  if (!data || data.length === 0) return <></>
+
   return (
     <Container>
       <h1>{title}</h1>

@@ -10,6 +10,8 @@ interface ComicListProps {
 }
 
 export function ComicList ({ title, data }: ComicListProps): React.ReactElement {
+  if (!data || data.length === 0) return <></>
+
   return (
     <Container>
       <h1>{title}</h1>

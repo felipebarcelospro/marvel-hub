@@ -8,7 +8,7 @@ export function Footer (): React.ReactElement {
       <Wrapper>
         <span>By <b>@felipebarcelospro</b></span>
 
-        <a className="btn btn-outline" href="#">
+        <a className="btn btn-outline" href="https://github.com/felipebarcelospro/marvel-hub" target="_blank">
           <FiGithub />
           Open on Github
         </a>
