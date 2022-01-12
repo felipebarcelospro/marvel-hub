@@ -19,7 +19,7 @@ export function Share (): React.ReactElement {
 
   useEffect(() => {
     setActualPath(window.location.href)
-  }, [actualPath])
+  }, [])
 
   return (
     <Container>
